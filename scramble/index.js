@@ -11,7 +11,7 @@ const indicators = [...Array(screenCount)].map((_, i) => {
 	indi.style.top = `${(100 * i) / screenCount}vh`;
 	indi.style.height = `${100 / screenCount}vh`;
 	indi.style.lineHeight = `${100 / screenCount}vh`;
-	indi.dataset.date = `${Date.now()}`;
+	indi.dataset.time = `${Date.now()}`;
 	return indi;
 });
 // const boxes = [...Array(screenCount)].map((_, i) => {
@@ -53,16 +53,16 @@ indicators.forEach((indicator, i) => {
 			duration: (duration * (i + 1)) / screenCount,
 		}
 	);
-	setTimeout(() => {
+	window.setTimeout(() => {
 		updateSign(i);
 	}, (duration * (i + 1)) / screenCount);
 	// animate(i)
 });
-setTimeout(() => {
+window.setTimeout(() => {
 	// 	// animate(i)
 	updateBox();
-	setInterval(updateBox, duration);
-	setInterval(() => {
+	window.setInterval(updateBox, duration);
+	window.setInterval(() => {
 		indicators;
 	}, duration / fps);
 }, duration / screenCount);
@@ -70,29 +70,60 @@ setTimeout(() => {
 function updateBox() {
 	// intervalIds.forEach(clearInterval);
 	// intervalIds = [...Array(screenCount)].map((_, i) =>
-	// 	setTimeout(() => {
-	// 		indicators[i].dataset.date = `${Date.now()}`;
+	// 	window.setTimeout(() => {
+	// 		indicators[i].dataset.time = `${Date.now()}`;
 	// 		updateSign(i);
 	// 		animate(i);
 	// 	}, (duration * i) / screenCount)
 	// );
 	[...Array(screenCount)].forEach((_, i) =>
-		setTimeout(() => {
-			indicators[i].dataset.date = `${Date.now()}`;
+		window.setTimeout(() => {
+			indicators[i].dataset.time = `${Date.now()}`;
 			updateSign(i);
 			animate(i);
 		}, (duration * i) / screenCount)
 	);
 }
+// /**
+//  * @type {[number,string | undefined][]}
+//  */
+// const newLocal_1 = indicators.map(({ dataset: { time } }, i) => [i, time]);
+// console.log(newLocal_1);
+// const longest = newLocal_1.sort(
+// 	([, t1], [, t2]) => parseInt(t2 ?? "") - parseInt(t1 ?? "")
+// );
+// console.log(longest);
+window.requestAnimationFrame(asd);
+/**
+ * @param {number} d
+ */
+function asd(d) {
+	/**
+	 * @type {[number,string | undefined][]}
+	 */
+	const timemap = indicators.map(({ dataset: { time } }, i) => [i, time]);
+	const longest = timemap.sort(
+		([, t1], [, t2]) => parseInt(t2 ?? "") - parseInt(t1 ?? "")
+	)[0][0];
+	indicators.forEach((indi, i) => {
+		if (longest === i) {
+			indi.classList.add("newest");
+		} else {
+			indi.classList.remove("newest");
+		}
+	});
+	// console.log(longest);
+	window.requestAnimationFrame(asd);
+}
 /**
  * @param {number} i
  */
 function setDisplayInterval(i) {
-	setInterval(() => {
+	window.setInterval(() => {
 		indicators[i].textContent = `${(
 			(1 -
 				(Date.now() -
-					new Date(parseInt(indicators[i].dataset.date ?? "")).getTime()) /
+					new Date(parseInt(indicators[i].dataset.time ?? "")).getTime()) /
 					duration) *
 			100
 		).toFixed(2)}%`;

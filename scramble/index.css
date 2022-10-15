@@ -29,6 +29,9 @@ body {
 .sign {
 	word-break: keep-all;
 }
+.newest.indicator {
+	background: #fff3;
+}
 
 @media (prefers-color-scheme: light) {
 	html {
