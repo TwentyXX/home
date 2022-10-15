@@ -1,0 +1,85 @@
+body {
+	margin: 0;
+	overflow: hidden;
+	/* width: calc(100vw - 1px); */
+	/* height: 100vh; */
+	/* border-right: 1px solid #fff; */
+}
+.box {
+	position: absolute;
+	/* top: 90%; */
+	/* bottom: 50vh; */
+	margin: 0;
+	font-size: 10vmin;
+	font-family: monospace;
+}
+.indicator {
+	position: absolute;
+	background: #fff2;
+	right: 0;
+	width: 100vw;
+	margin: 0;
+	font-size: 5vmin;
+
+	/* overflow-x: visible; */
+	/* text-align: right; */
+	/* left: 0; */
+	direction: rtl;
+}
+.sign {
+	word-break: keep-all;
+}
+
+@media (prefers-color-scheme: light) {
+	html {
+		background: gray;
+		color: black;
+		/* color-scheme: light; */
+	}
+	.sign {
+		border: 2px solid #000;
+		border-radius: 2px;
+	}
+	.sign.face-R {
+		background: lime;
+	}
+	.sign.face-U {
+		background: yellow;
+	}
+	.sign.face-F {
+		background: red;
+	}
+	.sign.face-L {
+		background: blue;
+	}
+	.sign.face-D {
+		background: white;
+	}
+	.sign.face-B {
+		background: orange;
+	}
+}
+@media (prefers-color-scheme: dark) {
+	html {
+		background: black;
+		color: white;
+	}
+	.sign.face-R {
+		color: lime;
+	}
+	.sign.face-U {
+		color: yellow;
+	}
+	.sign.face-F {
+		color: red;
+	}
+	.sign.face-L {
+		color: blue;
+	}
+	.sign.face-D {
+		color: white;
+	}
+	.sign.face-B {
+		color: orange;
+	}
+}
