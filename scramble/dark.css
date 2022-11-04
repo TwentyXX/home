@@ -1,0 +1,22 @@
+html {
+	background: black;
+	color: white;
+}
+.sign.face-R {
+	color: lime;
+}
+.sign.face-U {
+	color: yellow;
+}
+.sign.face-F {
+	color: red;
+}
+.sign.face-L {
+	color: #25f;
+}
+.sign.face-D {
+	color: white;
+}
+.sign.face-B {
+	color: orange;
+}

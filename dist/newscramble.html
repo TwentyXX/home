@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="generator" content="Sublime Text 3">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<style>body {
+  width: calc(100vw - 1px);
+  height: 100vh;
+  border-right: 1px solid #fff;
+  margin: 0;
+  font-family: monospace;
+  font-size: 13vmin;
+}
+
+.box {
+  margin: 0 auto;
+  position: absolute;
+}
+
+span {
+  word-break: keep-all;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+.indicator {
+  width: 0;
+  background: #fff3;
+  margin: 0;
+  position: absolute;
+}
+
+.face-R {
+  color: #0f0;
+}
+
+.face-U {
+  color: #ff0;
+}
+
+.face-F {
+  color: red;
+}
+
+.face-L {
+  color: #00f;
+}
+
+.face-D {
+  color: #fff;
+}
+
+.face-B {
+  color: orange;
+}
+
+</style>
+	</head>
+	<body>
+		<script>//@ts-check
+const LENG = 12;
+const KEY_SIGNS = "+-2";
+const KEY_CHARS = "RUFLDB";
+const duration = 10000;
+const screenCount = 3;
+const indicators = [
+    ...Array(screenCount)
+].map((_, i)=>{
+    const indi = document.body.appendChild(document.createElement("div"));
+    indi.className = "indicator";
+    indi.style.top = `${100 * i / screenCount}vh`;
+    indi.style.height = `${100 / screenCount}vh`;
+    return indi;
+});
+const boxes = [
+    ...Array(screenCount)
+].map((_, i)=>{
+    const box = document.body.appendChild(document.createElement("div"));
+    box.className = "box";
+    box.style.top = `${100 * i / screenCount}vh`;
+    return box;
+});
+const elesList = boxes.map((main)=>[
+        ...Array(LENG)
+    ].map((_, i)=>{
+        if (i !== 0) {
+            if (i % 6 === 0) main.appendChild(document.createElement("br"));
+            main.appendChild(document.createTextNode(" "));
+        }
+        return main.appendChild(document.createElement("span"));
+    }));
+let intervalId = 0;
+let intervalId2 = 0;
+let intervalIds = [];
+// update();
+// elesList.map((eles) => eles.map(updateSpan));
+// updateBox();
+setInterval(updateBox, duration);
+[
+    ...Array(screenCount)
+].forEach((_, i)=>{
+    a(i);
+});
+function a(i1) {
+    elesList[i1].map((spn, i)=>{
+        const sign = KEY_SIGNS[Math.floor(KEY_SIGNS.length * Math.random())];
+        const char = KEY_CHARS[3 * Math.floor(Math.random() * KEY_CHARS.length / 3) + i % 3];
+        spn.className = `face-${char}`;
+        spn.textContent = sign + char;
+    });
+    indicators[i1].animate([
+        {
+            width: "0"
+        },
+        {
+            width: "100vw"
+        }, 
+    ], {
+        duration
+    });
+}
+function updateBox() {
+    intervalIds.forEach(clearInterval);
+    intervalIds = [
+        ...Array(screenCount)
+    ].map((_, i)=>setTimeout(()=>{
+            a(i);
+        }, duration * i / screenCount));
+} // const main = document.body.appendChild(document.createElement("main"));
+ // const bar = document.body.appendChild(document.createElement("div"));
+ // const main2 = document.body.appendChild(document.createElement("main"));
+ // const bar2 = document.body.appendChild(document.createElement("div"));
+ // const eles = createEles(main);
+ // const eles2 = createEles(main2);
+ // switch (char) {
+ // 	case "R":
+ // 		spn.style.color = "lime";
+ // 		break;
+ // 	case "U":
+ // 		spn.style.color = "yellow";
+ // 		break;
+ // 	case "F":
+ // 		spn.style.color = "red";
+ // 		break;
+ // 	case "L":
+ // 		spn.style.color = "blue";
+ // 		break;
+ // 	case "D":
+ // 		spn.style.color = "white";
+ // 		break;
+ // 	case "B":
+ // 		spn.style.color = "orange";
+ // 		break;
+ // }
+ // clearInterval(intervalId);
+ // clearInterval(intervalId2);
+ // setTimeout(update2, duration / screenCount);
+ // intervalId = setInterval(update, duration);
+ // intervalId2 = setTimeout(update2, duration / 2);
+ // bar.animate(
+ // 	[
+ // 		{
+ // 			width: "0",
+ // 		},
+ // 		{
+ // 			width: "100vw",
+ // 		},
+ // 	],
+ // 	{
+ // 		duration,
+ // 	}
+ // );
+ // const update2 = () => {
+ // 	eles2.map((spn, i) => {
+ // 		const sign = KEY_SIGNS[Math.floor(KEY_SIGNS.length * Math.random())];
+ // 		const chars =
+ // 			KEY_CHARS[
+ // 				3 * Math.floor((Math.random() * KEY_CHARS.length) / 3) + (i % 3)
+ // 			];
+ // 		switch (chars) {
+ // 			case "R":
+ // 				spn.style.color = "lime";
+ // 				break;
+ // 			case "U":
+ // 				spn.style.color = "yellow";
+ // 				break;
+ // 			case "F":
+ // 				spn.style.color = "red";
+ // 				break;
+ // 			case "L":
+ // 				spn.style.color = "blue";
+ // 				break;
+ // 			case "D":
+ // 				spn.style.color = "white";
+ // 				break;
+ // 			case "B":
+ // 				spn.style.color = "orange";
+ // 				break;
+ // 		}
+ // 		spn.textContent = sign + chars;
+ // 	});
+ // 	bar2.animate(
+ // 		[
+ // 			{
+ // 				width: "100vw",
+ // 				opacity: "0",
+ // 				"--barr": "0%",
+ // 			},
+ // 			{
+ // 				width: "0",
+ // 				opacity: "var(--barr)",
+ // 				"--barr": "100%",
+ // 			},
+ // 		],
+ // 		{
+ // 			duration,
+ // 			// delay: duration / 2
+ // 		}
+ // 	);
+ // };
+ // document.onkeyup = update;
+
+</script>
+	</body>
+</html>

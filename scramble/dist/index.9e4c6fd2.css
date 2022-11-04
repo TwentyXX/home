@@ -1,0 +1,35 @@
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.box {
+  margin: 0;
+  font-family: monospace;
+  font-size: 10vmin;
+  position: absolute;
+}
+
+.indicator {
+  width: 100vw;
+  direction: rtl;
+  background: #fff2;
+  margin: 0;
+  font-size: 5vmin;
+  position: absolute;
+  right: 0;
+}
+
+.sign {
+  word-break: keep-all;
+}
+
+.newest.indicator {
+  background: #fff3;
+}
+
+/*# sourceMappingURL=index.9e4c6fd2.css.map */

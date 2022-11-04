@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="generator" content="Sublime Text 3">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<style>
+			body {
+				margin: 0;
+				font-size: 5vw;
+				font-family: 'SOURCECODE';
+				background-color: #223;
+				color: #fff;
+			}
+			span {
+				border-radius: 1vw;
+				-webkit-box-shadow: 0 1vw 1vw #000;
+				box-shadow: 0 1vw 1vw #000;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+		</main>
+		<script>
+			const KEY_SIGNS = '+-2';
+			const KEY_CHARS = 'RUFLDB';
+			for (let i = 0; i < document.getElementsByTagName('span').length; i++) {
+					document.getElementsByTagName('span')[i].textContent
+						+= KEY_SIGNS[Math.floor(KEY_SIGNS.length * Math.random())]
+						+= KEY_CHARS[3 * Math.floor(Math.random() * KEY_CHARS.length / 3) + (i % 3)]
+						+= ' '
+						;
+			};
+		</script>
+	</body>
+</html>

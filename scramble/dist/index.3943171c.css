@@ -1,0 +1,35 @@
+html {
+  color: #000;
+  background: gray;
+}
+
+.sign {
+  border: 2px solid #000;
+  border-radius: 2px;
+}
+
+.sign.face-R {
+  background: #0f0;
+}
+
+.sign.face-U {
+  background: #ff0;
+}
+
+.sign.face-F {
+  background: red;
+}
+
+.sign.face-L {
+  background: #00f;
+}
+
+.sign.face-D {
+  background: #fff;
+}
+
+.sign.face-B {
+  background: orange;
+}
+
+/*# sourceMappingURL=index.3943171c.css.map */

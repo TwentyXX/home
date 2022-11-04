@@ -1,3 +1,6 @@
+html {
+	color-scheme: light;
+}
 body {
 	margin: 0;
 	overflow: hidden;
@@ -31,58 +34,4 @@ body {
 }
 .newest.indicator {
 	background: #fff3;
-}
-
-@media (prefers-color-scheme: light) {
-	html {
-		background: gray;
-		color: black;
-		/* color-scheme: light; */
-	}
-	.sign {
-		border: 2px solid #000;
-		border-radius: 2px;
-	}
-	.sign.face-R {
-		background: lime;
-	}
-	.sign.face-U {
-		background: yellow;
-	}
-	.sign.face-F {
-		background: red;
-	}
-	.sign.face-L {
-		background: blue;
-	}
-	.sign.face-D {
-		background: white;
-	}
-	.sign.face-B {
-		background: orange;
-	}
-}
-@media (prefers-color-scheme: dark) {
-	html {
-		background: black;
-		color: white;
-	}
-	.sign.face-R {
-		color: lime;
-	}
-	.sign.face-U {
-		color: yellow;
-	}
-	.sign.face-F {
-		color: red;
-	}
-	.sign.face-L {
-		color: blue;
-	}
-	.sign.face-D {
-		color: white;
-	}
-	.sign.face-B {
-		color: orange;
-	}
 }

@@ -1,0 +1,27 @@
+html {
+	background: gray;
+	color: black;
+	/* color-scheme: light; */
+}
+.sign {
+	border: 2px solid #000;
+	border-radius: 2px;
+}
+.sign.face-R {
+	background: lime;
+}
+.sign.face-U {
+	background: yellow;
+}
+.sign.face-F {
+	background: red;
+}
+.sign.face-L {
+	background: blue;
+}
+.sign.face-D {
+	background: white;
+}
+.sign.face-B {
+	background: orange;
+}
