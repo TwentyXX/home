@@ -2,29 +2,24 @@
 const cursor = document.getElementById("cursor");
 let oldX,
 	oldY,
-	oldDir = 0;
-let mouseX,
-	mouseY,
+	oldDir = 0,
 	d = 0;
+const duration = 80;
 document.addEventListener("mousemove", ({ x, y }) => {
-	const duration = 100;
 	if (d + duration < new Date().getTime()) {
-		mouseX = x;
-		mouseY = y;
+		update(x, y);
+		// 	// mouseX = x;
+		// 	// mouseY = y;
+		// 	// requestAnimationFrame(update);
 		d = new Date().getTime();
 	}
 });
-requestAnimationFrame(update);
-
-function update() {
+function update(mouseX, mouseY) {
 	const radius = Math.sqrt((mouseX - oldX) ** 2 + (mouseY - oldY) ** 2);
 	if (1 < radius) {
-		let dir = Math.atan2(mouseX - oldX, oldY - mouseY) ?? 0;
-		let diff = dir - oldDir;
-		if (Math.PI < Math.abs(diff)) {
-			diff -= Math.sign(diff) * 2 * Math.PI;
-		}
-		dir = oldDir + diff;
+		const atandir = Math.atan2(mouseX - oldX, oldY - mouseY) ?? oldDir;
+		const diff = atandir - oldDir;
+		const dir = oldDir + euc(diff, Math.PI);
 		if (cursor) {
 			cursor.style.rotate = `${dir}rad`;
 			cursor.style.left = `${mouseX}px`;
@@ -34,5 +29,10 @@ function update() {
 	}
 	oldX = mouseX;
 	oldY = mouseY;
-	requestAnimationFrame(update);
+}
+
+function euc(dividend, divisor) {
+	const dd = divisor * 2;
+	const m = dividend % dd;
+	return divisor < m ? (m - dd) * Math.sign(m) : (-divisor < m ? 0 : dd) + m;
 }
